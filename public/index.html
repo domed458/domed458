@@ -1,0 +1,329 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRC Connect | Community Marketplace & Growth Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a3a24 0%, #2E5B3C 50%, #1a3a24 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2E5B3C 0%, #D4A373 100%);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(46, 91, 60, 0.3);
+        }
+
+        .logo-icon span {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #2E5B3C 0%, #D4A373 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .logo-tagline {
+            font-size: 16px;
+            color: #666;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #2E5B3C, #D4A373);
+            margin: 20px auto;
+            border-radius: 3px;
+        }
+
+        .values {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .value-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .value-title {
+            font-weight: 600;
+            color: #2E5B3C;
+            font-size: 14px;
+        }
+
+        .status-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+
+        .green-dot {
+            width: 10px;
+            height: 10px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .endpoints {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .endpoint-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .endpoint-card:hover {
+            border-color: #D4A373;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .method {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .method.get { background: #4CAF50; color: white; }
+        .method.post { background: #2196F3; color: white; }
+
+        .endpoint-url {
+            font-family: monospace;
+            font-size: 13px;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .endpoint-desc {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .footer a {
+            color: #2E5B3C;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            .logo-text {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <span>LRC</span>
+            </div>
+            <div class="logo-text">LRC CONNECT</div>
+            <div class="logo-tagline">Community Marketplace & Growth Platform</div>
+            <div class="divider"></div>
+        </div>
+
+        <p style="text-align: center; color: #555; line-height: 1.6; margin-bottom: 20px;">
+            <em>"Nurturing saints towards deeper growth into maturity by facilitating the abundant flow of God's grace in their lives."</em>
+        </p>
+
+        <div class="values">
+            <div class="value-item">
+                <div class="value-icon">✨</div>
+                <div class="value-title">Authenticity</div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🏠</div>
+                <div class="value-title">Community Life</div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🌱</div>
+                <div class="value-title">Personal Maturity</div>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">💧</div>
+                <div class="value-title">Humility</div>
+            </div>
+        </div>
+
+        <div class="status-card">
+            <div class="status-badge">
+                <span class="green-dot"></span>
+                <strong>API Status: Operational</strong>
+            </div>
+            <div class="api-version">
+                Version 1.0.0 | Database: Connected
+            </div>
+        </div>
+
+        <h3 style="color: #2E5B3C; margin-bottom: 15px; text-align: center;">📡 API Endpoints</h3>
+        <div class="endpoints">
+            <div class="endpoint-card" onclick="copyToClipboard('http://localhost:5001/api/auth/test')">
+                <span class="method get">GET</span>
+                <div class="endpoint-url">/api/auth/test</div>
+                <div class="endpoint-desc">Test authentication</div>
+            </div>
+            <div class="endpoint-card" onclick="copyToClipboard('http://localhost:5001/api/auth/register')">
+                <span class="method post">POST</span>
+                <div class="endpoint-url">/api/auth/register</div>
+                <div class="endpoint-desc">Register new user</div>
+            </div>
+            <div class="endpoint-card" onclick="copyToClipboard('http://localhost:5001/api/auth/login')">
+                <span class="method post">POST</span>
+                <div class="endpoint-url">/api/auth/login</div>
+                <div class="endpoint-desc">User login</div>
+            </div>
+            <div class="endpoint-card" onclick="copyToClipboard('http://localhost:5001/api/auth/users')">
+                <span class="method get">GET</span>
+                <div class="endpoint-url">/api/auth/users</div>
+                <div class="endpoint-desc">List all users</div>
+            </div>
+            <div class="endpoint-card" onclick="copyToClipboard('http://localhost:5001/health')">
+                <span class="method get">GET</span>
+                <div class="endpoint-url">/health</div>
+                <div class="endpoint-desc">Server health</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 LRC Connect | Life Reformation Centre Community</p>
+            <p>📍 Githurai 45, Nairobi - Kenya</p>
+            <p><a href="/">JSON API</a> | <a href="/health">Health Check</a></p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.createElement('div');
+                notification.textContent = '✅ URL copied!';
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.background = '#2E5B3C';
+                notification.style.color = 'white';
+                notification.style.padding = '10px 20px';
+                notification.style.borderRadius = '5px';
+                notification.style.zIndex = '1000';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+            });
+        }
+    </script>
+</body>
+</html>
